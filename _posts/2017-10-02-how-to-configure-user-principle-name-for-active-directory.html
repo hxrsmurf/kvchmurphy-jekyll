@@ -1,0 +1,39 @@
+---
+layout: post
+status: publish
+published: true
+title: How to Configure User Principle Name for Active Directory
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 392
+wordpress_url: https://kvchmurphy.com/?p=392
+date: '2017-10-02 21:08:52 -0500'
+date_gmt: '2017-10-03 01:08:52 -0500'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<h3>To add UPN suffixes</h3>
+<ol>
+<li>Open Active Directory Domains and Trusts. To open Active Directory Domains and Trusts, click Start , click Administrative Tools , and then click Active Directory Domains and Trusts .</li>
+<li>In the console tree, right-click Active Directory Domains and Trusts , and then click Properties .</li>
+<li>On the UPN Suffixes tab, type an alternative UPN suffix for the forest, and then click Add .</li>
+<li>Repeat step 3 to add additional alternative UPN suffixes.</li>
+</ol>
+<p>Note: You must be a member of the Domain Admins group or Enterprise Admins group</p>
+<h3>Change the UPN suffix for existing users</h3>
+<ol>
+<li>On the server that Active Directory Domain Services (AD DS) runs on, in the Server Manager choose Tools &gt; Active Directory Active Directory Users and Computers.</li>
+<li>Select a user, right-click, and then choose Properties.</li>
+<li>On the Account tab, in the UPN suffix drop-down list, choose the new UPN suffix, and then choose OK.</li>
+</ol>
+<p>Run the following Windows PowerShell commands to update all contoso.local suffixes to contoso.com:</p>
+<pre>$LocalUsers = Get-ADUser -Filter {UserPrincipalName -like '*contoso.local'} -Properties userPrincipalName -ResultSetSize $null</pre>
+<pre>$LocalUsers | foreach {$newUpn = $_.UserPrincipalName.Replace("contoso.local","contoso.com"); $_ | Set-ADUser -UserPrincipalName $newUpn}</pre>
+<p><a href="https://technet.microsoft.com/en-us/library/cc772007(v=ws.11).aspx">TechNet</a> | <a href="https://support.office.com/en-us/article/How-to-prepare-a-non-routable-domain-such-as-local-domain-for-directory-synchronization-e7968303-c234-46c4-b8b0-b5c93c6d57a7">Office</a></p>

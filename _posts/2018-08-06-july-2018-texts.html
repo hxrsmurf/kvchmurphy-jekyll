@@ -1,0 +1,33 @@
+---
+layout: post
+status: publish
+published: true
+title: July 2018 Texts
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 540
+wordpress_url: https://kvchmurphy.com/?p=540
+date: '2018-08-06 06:09:19 -0500'
+date_gmt: '2018-08-06 10:09:19 -0500'
+categories:
+- Stats
+tags: []
+comments: []
+---
+<p>Here's the Google <a href="https://datastudio.google.com/open/11dudPWndPHApMfCZW9mdEQn3nP9cprE-">Data Studio</a> for this month. I almost published before double-checking for my friend "Brandon 1." Signal has the country code and omits the dash between the phone number. My "contact" SQL table, well BigQuery table, has those dashes. I guess I could update/add the contact, but eh lazy.</p>
+<p>I've been able to optimize my workflow with the tools below. Here's the <a href="https://kvchmurphy.com/2018/07/how-to-export-encrypted-signal-messages/">tutorial</a>.</p>
+<ol>
+<li>xml2json</li>
+<li>jq</li>
+<li>TimeZone convert</li>
+<li>Better Excel formulas</li>
+</ol>
+<p>I'm back at it with texting every single hour of a day during the month! Yay. Eventually, I'll sit down and look at these stats in a larger picture...but not today.</p>
+<p>I'm down to about 30-45 minutes or so. The hardest part is parsing the WhatsApp text file. It just does one-by-one line for each message and doesn't split it up at all. So, I do a bunch of left, right, find, and trims to get that. The timezone convert formula in Excel definitely helps with Signal, as well as the xml2json.</p>
+<p>I think a few months ago, I converted to a better Google BigQuery formula. I am able to copy the report template each time and just update the record source with the new query. The "new query" is not really new, I simply update the "month = [month here]".</p>
+<p>If you're new to the stats, I just like looking at the graphs and numbers. It obviously looks like a ranking system, but I don't mean it to be!</p>

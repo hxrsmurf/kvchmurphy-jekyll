@@ -1,0 +1,30 @@
+---
+layout: post
+status: publish
+published: true
+title: Troubleshooting IIS Losing Its SSL Binding
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 307
+wordpress_url: https://kvchmurphy.com/?p=307
+date: '2017-07-16 17:19:49 -0500'
+date_gmt: '2017-07-16 21:19:49 -0500'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<p>The issue was that the IIS server would lose the domain's SSL binding when rebooting. Another website that the customer had did not have this issue when the server reboot. The only thing I noticed different was that the SSL did not have the private key (the one that got lost in IIS). IIS binding would be in both the IIS GUI interface and the config file C:\inetpub\system32\inetsrv\config\applicationhost.config. After multiple searches, I found this great article suggesting the below.</p>
+<ol>
+<li>Export the SSL from IIS/MMC-&gt;Certificates</li>
+<li>Delete from IIS/MMC-&gt;Certificates</li>
+<li>Re-import the SSL</li>
+<li>Rebind the website within IIS</li>
+</ol>
+<p>Luckily, the customer had the old SSL lying around and I was able to re-import that. The SSL in MMC at the time did not have the private key for whatever reason.</p>
+<p><a href="https://social.technet.microsoft.com/Forums/windows/en-US/401d9461-4d13-462d-81b6-c445718c9d56/iis-ssl-binding-certificate-lost-on-server-restart-2008-r2-iis75?forum=winserversecurity">Social Technet</a></p>

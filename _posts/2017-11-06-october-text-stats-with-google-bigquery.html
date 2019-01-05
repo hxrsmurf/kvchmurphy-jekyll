@@ -1,0 +1,227 @@
+---
+layout: post
+status: publish
+published: true
+title: October Text Stats with Google BigQuery
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 428
+wordpress_url: https://kvchmurphy.com/?p=428
+date: '2017-11-06 13:55:59 -0600'
+date_gmt: '2017-11-06 18:55:59 -0600'
+categories:
+- Stats
+tags: []
+comments: []
+---
+<p>Edit: 11 December 2017 - While compiling November stats, I unfortunately noticed that I converted the date to the wrong weekday. Future stats will be fixed. This one I am not going to. Each weekday is one more than it should be. So, if it says Tuesday, it's actually Monday.</p>
+<p>I decided to move my stats from a basic spreadsheet to Google BigQuery, a big data tool. The accumulation of tracking my texts has reached 35,639 rows and LibreOffice Calc is struggling. Unfortunately, I cannot embed the DataStudio (Google's frontend for BigQuery). I highly recommend you click the link below to view the graphs themselves.</p>
+<p><a href="https://datastudio.google.com/reporting/0ByWCHh83WFMaSDFYVWpfTkVfQzQ/page/hgxJ">Google DataStudio</a></p>
+<ul>
+<li>I continued to text at all hours. I still do not sleep! 0100 and 1200 were my most active! I tend to dip down during my work shift (who would have guessed!)</li>
+<li>Tuesday and Monday were my most active days</li>
+<li>Tuesdays at 2200 being the most active</li>
+<li>Sundays at 0100, the start of my weekend, I sent the most messages at 120. Friday closely follows with 100 texts sent.</li>
+<li>By less than 50 texts, Rob has taken the number 1 spot from Brandon 1!</li>
+<li>Both Rob and Brandon 1 have similar peek hours and weekdays: Tuesday and Thursdays &amp; 0100 and 1200.</li>
+</ul>
+<p>&nbsp;</p>
+<table dir="ltr" style="height: 295px;" border="1" width="532" cellspacing="0" cellpadding="0">
+<colgroup>
+<col width="100" />
+<col width="100" />
+<col width="100" />
+<col width="100" /></colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Received Rank&quot;}"><strong>Rank</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Person&quot;}"><strong>Person</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;received&quot;}"><strong>received</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;sent&quot;}"><strong>sent</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:1}"><strong>1</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Rob&quot;}"><strong>Rob</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:433}">433</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:504}">504</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:2}"><strong>2</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Brandon 1&quot;}"><strong>Brandon 1</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:387}">387</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:502}">502</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:3}"><strong>3</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Steven&quot;}"><strong>Steven</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:343}">343</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:406}">406</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:4}"><strong>4</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Tyler 1&quot;}"><strong>Tyler 1</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:298}">298</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:417}">417</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:5}"><strong>5</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Chris&quot;}"><strong>Chris</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:263}">263</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:350}">350</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:6}"><strong>6</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Colin&quot;}"><strong>Colin</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:210}">210</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:338}">338</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:7}"><strong>7</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Eva&quot;}"><strong>Eva</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:207}">207</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:297}">297</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:8}"><strong>8</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Cody&quot;}"><strong>Cody</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:118}">118</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:189}">189</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:9}"><strong>9</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Mom&quot;}"><strong>Mom</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:50}">50</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:60}">60</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:10}"><strong>10</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Maribel&quot;}"><strong>Maribel</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:48}">48</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:26}">26</td>
+</tr>
+</tbody>
+</table>
+<table dir="ltr" style="height: 222px;" border="1" width="530" cellspacing="0" cellpadding="0">
+<colgroup>
+<col width="100" />
+<col width="100" />
+<col width="100" />
+<col width="100" /></colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Received Rank&quot;}"><strong>Rank</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Weekday&quot;}"><strong>Weekday</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;received&quot;}"><strong>received</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;sent&quot;}"><strong>sent</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:1}"><strong>1</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Tuesday&quot;}"><strong>Tuesday</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:554}">554</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:686}">686</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:2}"><strong>2</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Monday&quot;}"><strong>Monday</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:464}">464</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:674}">674</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:3}"><strong>3</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Sunday&quot;}"><strong>Sunday</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:421}">421</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:579}">579</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:4}"><strong>4</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Thursday&quot;}"><strong>Thursday</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:313}">313</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:421}">421</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:5}"><strong>5</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Saturday&quot;}"><strong>Saturday</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:335}">335</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:397}">397</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:6}"><strong>6</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Friday&quot;}"><strong>Friday</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:337}">337</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:372}">372</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:7}"><strong>7</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Wednesday&quot;}"><strong>Wednesday</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:220}">220</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:284}">284</td>
+</tr>
+</tbody>
+</table>
+<table dir="ltr" style="height: 246px;" border="1" width="529" cellspacing="0" cellpadding="0">
+<colgroup>
+<col width="100" />
+<col width="100" />
+<col width="100" />
+<col width="100" /></colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Received Rank&quot;}"><strong>Rank</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Weekday&quot;}"><strong>Weekday</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Brandon 1&quot;}"><strong>Brandon 1</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Rob&quot;}"><strong>Rob</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:1}"><strong>1</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Sunday&quot;}"><strong>Sunday</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:54}">54</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:46}">46</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:2}"><strong>2</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Monday&quot;}"><strong>Monday</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:70}">70</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:38}">38</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:3}"><strong>3</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Tuesday&quot;}"><strong>Tuesday</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:69}">69</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:158}">158</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:4}"><strong>4</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Wednesday&quot;}"><strong>Wednesday</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:41}">41</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:16}">16</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:5}"><strong>5</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Thursday&quot;}"><strong>Thursday</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:54}">54</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:74}">74</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:6}"><strong>6</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Friday&quot;}"><strong>Friday</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:63}">63</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:42}">42</td>
+</tr>
+<tr>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:7}"><strong>7</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Saturday&quot;}"><strong>Saturday</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:36}">36</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:59}">59</td>
+</tr>
+<tr>
+<td style="text-align: center;" colspan="2" rowspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Grand Total&quot;}"><strong>Grand Total</strong></td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:387}" data-sheets-formula="=SUM(R[-7]C[0]:R[-1]C[0])">387</td>
+<td style="text-align: center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:433}" data-sheets-formula="=SUM(R[-7]C[0]:R[-1]C[0])">433</td>
+</tr>
+</tbody>
+</table>

@@ -1,0 +1,44 @@
+---
+layout: post
+status: publish
+published: true
+title: How To Setup MySQL Replication
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 285
+wordpress_url: https://kvchmurphy.com/?p=285
+date: '2017-06-17 13:46:22 -0500'
+date_gmt: '2017-06-17 17:46:22 -0500'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<p><strong>Master</strong>:</p>
+<ul>
+<li>Backup the desired databases</li>
+<li>Create a replication user</li>
+<li>Modify the /etc/mysql/my.cnf:</li>
+</ul>
+<pre style="padding-left: 60px;">server-id=[MASTER SERVER ID]
+log_bin=mysql-bin
+log_error=mysql-bin.err
+</pre>
+<ul>
+<li>Restart the MySQL server</li>
+</ul>
+<p><strong>Slave</strong>:</p>
+<ul>
+<li>Import the master's database</li>
+<li>Connect to the master using server-id = [MASTER SERVER ID]</li>
+<li>Restart MySQL</li>
+</ul>
+<pre style="padding-left: 60px;">FLUSH TABLES WITH READ LOCK;
+SET GLOBAL read_only = ON;</pre>
+<p>&nbsp;</p>
+<p>MySQL Source | MySQL Replication Article</p>

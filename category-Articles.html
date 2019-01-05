@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<h3>Articles</h3>
+
+{% for post in site.posts %}
+{% if  post.categories contains "Articles" %}
+
+<li><a href ="{{post.url}}.html">{{ post.title }}</a></ul>
+
+{% endif %}
+{% endfor %}
+

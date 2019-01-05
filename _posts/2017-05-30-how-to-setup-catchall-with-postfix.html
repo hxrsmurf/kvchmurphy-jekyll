@@ -1,0 +1,38 @@
+---
+layout: post
+status: publish
+published: true
+title: How To Setup CatchAll with Postfix
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 253
+wordpress_url: http://kvchmurphy.com/?p=253
+date: '2017-05-30 13:17:57 -0500'
+date_gmt: '2017-05-30 17:17:57 -0500'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<p>Put the below in your /etc/postfix/virtual file:</p>
+<blockquote><p>@[Domain].com [Local E-mail Account]</p></blockquote>
+<p>Put the below in your /etc/postfix/main.cf file:</p>
+<blockquote><p>virtual_alias_maps = hash:/etc/postfix/virtual</p></blockquote>
+<p>Issue the commands below:</p>
+<blockquote><p>postmap /etc/postfix/virtual</p>
+<p>service postfix reload</p></blockquote>
+<p>&nbsp;</p>
+<p>I have a few addresses that I never want to receive e-mail for, like Facebook, Twitch, Twitter, and that type of thing. I had my virtual setup as "bounce" which is an /etc/alias for my main e-mail. Whoops! Here is my configuration below, /etc/postfix/main.cf and then /etc/postfix/virtual:</p>
+<blockquote><p>virtual_alias_maps = hash:/etc/postfix/virtual</p>
+<p>abuse@hxrsmurf.info moo<br />
+kevin-fb@hxrsmurf.info moo<br />
+kevin-twitch@hxrsmurf.info moo<br />
+moo@hxrsmurf.info moo<br />
+@hxrsmurf.info kevin<br />
+@kvchmurphy.com kevin</p></blockquote>
+<p><a href="https://www.cyberciti.biz/faq/howto-setup-postfix-catch-all-email-accounts/">Source</a></p>

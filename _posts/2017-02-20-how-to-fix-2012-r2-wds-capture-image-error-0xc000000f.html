@@ -1,0 +1,24 @@
+---
+layout: post
+status: publish
+published: true
+title: How To Fix 2012 R2 WDS Capture Image Error 0xc000000f
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 137
+wordpress_url: http://kvchmurphy.com/?p=137
+date: '2017-02-20 13:50:50 -0600'
+date_gmt: '2017-02-20 18:50:50 -0600'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<p><code>dism /mount-wim /wimfile:”E:\Path To WIM File\Capture.wim” /mountdir:”C:\MountTemp” /index:1<br />
+dism /unmount-wim /mountdir:”C:\MountTemp” /commit</code></p>
+<p><a href="http://jdav.is/2015/10/06/windows-server-2012-wds-capture-image-winload-exe-corrupt-or-missing/">Reference</a></p>

@@ -1,0 +1,44 @@
+---
+layout: post
+status: publish
+published: true
+title: How To Setup A NAT-traversal Virtual Machine In Google Compute Engine
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 279
+wordpress_url: https://kvchmurphy.com/?p=279
+date: '2017-06-16 12:41:09 -0500'
+date_gmt: '2017-06-16 16:41:09 -0500'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<p>Here is how to setup a front-end Virtual Machine in Google Compute Engine to allow other machines to route through it without a public IP address.</p>
+<p>To allow the front-end VM to IP forward, run the below in command-line (or a Startup Script):</p>
+<pre>#!/bin/bash
+sysctl -w net.ipv4.ip_forward=1
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</pre>
+<p>Remember to tag any virtual machines that do not have a public IP with a label like, "no-ip."</p>
+<p>Next, create a default route within Networking-&gt;Routes:</p>
+<pre>Name: default-route
+
+Description:
+
+Network: default
+
+Destination IP range: 0.0.0.0/0
+
+Priority: 800
+
+Instance Tags: no-ip
+
+Next hop: Specify an instance
+
+Next hop instance: The  front-end VM name</pre>
+<p><a href="https://cloud.google.com/compute/docs/vpc/special-configurations#natgateway">Source</a></p>

@@ -1,0 +1,32 @@
+---
+layout: post
+status: publish
+published: true
+title: How To Renew LetsEncrypt with DNS
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 446
+wordpress_url: https://kvchmurphy.com/?p=446
+date: '2017-11-18 09:07:38 -0600'
+date_gmt: '2017-11-18 14:07:38 -0600'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<ol>
+<li>Install certbot as needed for your web server and operating system from <a href="https://certbot.eff.org/">EFF</a></li>
+<li><code>certbot certonly --manual --preferred-challenges dns -d [domain]</code></li>
+<li>Create DNS CNAME as needed</li>
+<li>Wait for DNS propagation - <a href="https://toolbox.googleapps.com/apps/dig/#TXT/">Google ToolBox</a></li>
+<li>certbot should create /etc/letsencrypt/live/[domain]</li>
+</ol>
+<p>The below is for web root (.well-known/acme-challenge)</p>
+<ul>
+<li><code>certbot certonly --manual --preferred-challenges=http -d [domain]</code></li>
+</ul>

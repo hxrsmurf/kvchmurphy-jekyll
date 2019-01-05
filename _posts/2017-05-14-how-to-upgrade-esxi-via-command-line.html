@@ -1,0 +1,30 @@
+---
+layout: post
+status: publish
+published: true
+title: How To Upgrade ESXi via Command Line
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 190
+wordpress_url: http://kvchmurphy.com/?p=190
+date: '2017-05-14 19:38:51 -0500'
+date_gmt: '2017-05-14 23:38:51 -0500'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<ol>
+<li>Navigate to <a href="http://www.vmware.com/patchmgr/download.portal">VMWare's Patch Portal</a></li>
+<li>Download the latest update</li>
+<li>Upload to the ESXi Datastore</li>
+<li>SSH into the ESXi host and run the below</li>
+</ol>
+<blockquote><p>esxcli software vib update -d /vmfs/volumes/datastore1/ESXi650-201704001.zip</p></blockquote>
+<p>&nbsp;</p>
+<p><a href="https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=2008939">Article</a> | <a href="https://esxi-patches.v-front.de/ESXi-6.5.0.html">ESXi 6.5 Patch History</a></p>

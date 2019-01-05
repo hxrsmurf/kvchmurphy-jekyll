@@ -1,0 +1,38 @@
+---
+layout: post
+status: publish
+published: true
+title: How To Transfer FSMO Roles
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 10
+wordpress_url: http://kvchmurphy.com/?p=10
+date: '2016-11-13 14:11:16 -0600'
+date_gmt: '2016-11-13 19:11:16 -0600'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<p>Schema Master &amp; Domain naming master - <a href="https://technet.microsoft.com/en-us/library/dd378868(v=ws.10).aspx">TechNet</a></p>
+<ul>
+<li>regsvr32 schmmgmt.dll</li>
+<li>Use the MMC Add-In</li>
+</ul>
+<p>RID, PDC, or Infrastructure - <a href="https://technet.microsoft.com/en-us/library/cc816944(v=ws.10).aspx">TechNet</a></p>
+<p>Transfer these roles:</p>
+<ul>
+<li>Primary domain controller (PDC) emulator operations master</li>
+<li>Relative ID (RID) operations master</li>
+<li>Infrastructure operations master</li>
+</ul>
+<ol>
+<li>Active Directory Users and Computers</li>
+<li>At the top of the console tree, right-click Active Directory Users and Computers, click All Tasks, and - then click Operations Masters.</li>
+<li>Corresponding Tabs</li>
+</ol>

@@ -1,0 +1,39 @@
+---
+layout: post
+status: publish
+published: true
+title: Tutorial - Update DateTaken for EXIF Use
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 169
+wordpress_url: http://kvchmurphy.com/?p=169
+date: '2017-04-09 17:15:04 -0500'
+date_gmt: '2017-04-09 21:15:04 -0500'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<p>NOTE: -overwrite_original erases the orginal photo. I do this so I do not have to delete the "filename.jpg_original" afterwards. Please make backups of your photos before doing this!</p>
+<pre>JPG
+"exiftool(-k).exe" -overwrite_original "-datetimeoriginal&lt;filemodifydate" "[DIRECTORY]"
+"exiftool(-k).exe" -overwrite_original "-datetimeoriginal&gt;filemodifydate" "[DIRECTORY]"</pre>
+<pre>PNG
+"exiftool(-k).exe" -overwrite_original "-PNG:CreationTime&lt;FileModifyDate" "[DIRECTORY]"
+"exiftool(-k).exe" -overwrite_original "-PNG:CreationTime&gt;FileModifyDate" "[DIRECTORY]"</pre>
+<pre>Force Dates
+"exiftool(-k).exe" -"filemodifydate='2012:06:28 08:06:10-04:00'" "[File]"
+"exiftool(-k).exe" -"datetimeoriginal='2012:06:28 08:06:10-04:00'" "[File]"</pre>
+<pre>TagsFromFile
+"exiftool(-k).exe" -tagsfromfile "[Source File]" -filemodifydate "[Destination File]"</pre>
+<pre>Increment Dates
+"exiftool(-k).exe" -overwrite_original "-datetimeoriginal+&lt;0:${filesequence}0" "[Directory]"</pre>
+<pre>Convert from PNG to JPG
+magick mogrify -format jpg "[Directory]\*.png"
+</pre>
+<p><a href="https://gist.github.com/rjames86/33b9af12548adf091a26">Source</a> | <a href="http://u88.n24.queensu.ca/exiftool/forum/index.php?topic=5621.0">Increment Source</a> | <a href="http://www.imagemagick.org/discourse-server/viewtopic.php?t=14587">Mogrify Forum Post</a> | <a href="http://www.imagemagick.org/Usage/basics/#mogrify">Mogrify Doc</a></p>

@@ -1,0 +1,46 @@
+---
+layout: post
+status: publish
+published: true
+title: Using AWS Rekognition to Sort Images
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 552
+wordpress_url: https://kvchmurphy.com/?p=552
+date: '2018-09-03 12:36:31 -0500'
+date_gmt: '2018-09-03 16:36:31 -0500'
+categories:
+- Articles
+tags: []
+comments: []
+---
+<p>I take a lot of photos with my phone. About every month I back them up to my computer and sort them into folders. Even though the photos most contain my pets, I have other photos like of my motorcycle, receipts, funny Reddit posts and funny conversations. Here's an example folder layout:</p>
+<ul>
+<li>Pictures
+<ul>
+<li>Jane</li>
+<li>Ginger</li>
+<li>Stanley</li>
+<li>Huginn</li>
+<li>Cat Combo</li>
+<li>LG G6
+<ul>
+<li>Reddit</li>
+<li>Conversation</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>I can use machine learning to sort through these photos and organize them a heck of a lot quicker. Right now, the machine learning is using AWS' database. This means that it may not label my photos correctly. For example, one photo of the dog on a floral bed labeled the photo as "floral" rather than "dog." I'd like to implement a cross-check with Google Vision.</p>
+<p>From this small weekend project, I learned more about Python, functions, argument parameters, for loops, closing files properly, and closing GitHub issues.</p>
+<p>Eventually, I will figure out Tensorflow and manually train a model to sort for me. But this is a great first step for me.</p>
+<p>Check out the GitHub repo here:</p>
+<ul>
+<li><a href="https://github.com/hxrsmurf/python-image-recognition">https://github.com/hxrsmurf/python-image-recognition</a></li>
+</ul>

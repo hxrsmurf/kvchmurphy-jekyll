@@ -1,0 +1,31 @@
+---
+layout: post
+status: publish
+published: true
+title: QNAP Silent Data Corruption
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 333
+wordpress_url: https://kvchmurphy.com/?p=333
+date: '2017-08-12 14:03:54 -0500'
+date_gmt: '2017-08-12 18:03:54 -0500'
+categories:
+- Articles
+tags: []
+comments: []
+---
+<p>To those that use qnap NAS storage there is a known silent data corruption if you use RAID 5 or RAID 6. If your NAS is NOT listed in the qnap article below, your NAS is affected!</p>
+<p>You will need to install a new firmware update which installs RAID scrubbing and then initialize the actual scrub.</p>
+<p>Here is how to do the RAID Scrubbing:</p>
+<ol>
+<li>Log on to QTS as administrator.</li>
+<li>Go to "Storage Manager" &gt; "Storage Space".</li>
+<li>Select the storage pool or volume that contains the RAID 5 or RAID 6 group and then click "Manage".</li>
+<li>Select the RAID group, click "Manage", and then select "RAID Scrubbing".</li>
+</ol>
+<p><a href="https://www.reddit.com/r/sysadmin/comments/6sup8i/company_is_using_qnap_for_nasbackup_need_a_more/dlgl3vp/">Reddit</a> | <a href="https://www.qnap.com/en/technical-advisory/tec-201707-01">QNAP Article</a> | <a href="https://www.qnap.com/en/how-to/faq/article/important-qts-update-for-potential-silent-data-corruption-on-nas-using-raid-56">QNAP FAQ</a></p>

@@ -1,0 +1,36 @@
+---
+layout: post
+status: publish
+published: true
+title: How To Use Gsutil To Backup to Google Cloud Storage
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 158
+wordpress_url: http://kvchmurphy.com/?p=158
+date: '2017-03-17 14:21:23 -0500'
+date_gmt: '2017-03-17 18:21:23 -0500'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<blockquote>apt-get install curl apt-transport-https -yf</p>
+<p>export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"</p>
+<p>echo "deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list</p>
+<p>curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -</p>
+<p>apt-get update &amp;&amp; apt-get install google-cloud-sdk -yf</p>
+<p>gcloud init</p>
+<p>&nbsp;</p>
+<p>gsutil -m rsync -d -r /data/ gs://[bucket]/data</p></blockquote>
+<p>Enable SWAP:</p>
+<pre>dd if=/dev/zero of=/var/swap bs=2048 count=500000
+ chmod 600 /var/swap
+ mkswap /var/swap
+ swapon /var/swap
+ apt upgrade</pre>
+<p><a href="https://cloud.google.com/storage/docs/gsutil_install">Setting Up</a> | <a href="https://cloud.google.com/storage/docs/gsutil/commands/rsync">rsync commands</a></p>

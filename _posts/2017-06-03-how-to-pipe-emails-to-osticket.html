@@ -1,0 +1,31 @@
+---
+layout: post
+status: publish
+published: true
+title: How To Pipe E-mails to osTicket
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 263
+wordpress_url: http://kvchmurphy.com/?p=263
+date: '2017-06-03 16:27:10 -0500'
+date_gmt: '2017-06-03 20:27:10 -0500'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<p>Here is how to setup osTicket to "pick-up" e-mails by e-mailing its PHP script directly.</p>
+<p>Put the below in your /etc/postfix/virtual</p>
+<blockquote><p>example@domain.com examplealias</p></blockquote>
+<p>Now, edit your /etc/aliases with the below:</p>
+<blockquote><p>examplealias: "|/usr/bin/php -q /home/user/domains/domain.com/public_html/ticket/api/pipe.php"</p></blockquote>
+<p>Finally, issue the commands below:</p>
+<blockquote><p>postmap /etc/postfix/virtual<br />
+/etc/init.d/postfix restart<br />
+pnewaliases</p></blockquote>
+<p><a href="http://www.anthonyhawk.com/piping-emails-to-osticket-with-postfix/">Source</a></p>

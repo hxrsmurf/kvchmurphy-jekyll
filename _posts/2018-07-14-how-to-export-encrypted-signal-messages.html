@@ -1,0 +1,92 @@
+---
+layout: post
+status: publish
+published: true
+title: How To Export Encrypted Signal Messages
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 526
+wordpress_url: https://kvchmurphy.com/?p=526
+date: '2018-07-14 10:11:41 -0500'
+date_gmt: '2018-07-14 14:11:41 -0500'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<ul>
+<li>Debian 9.6 x64</li>
+</ul>
+<p>The below commands:</p>
+<ol>
+<li>Adds NodeSource's repo to your aptitude repository</li>
+<li>Refreshes the aptitude repository</li>
+<li>Installs the apps below:
+<ol>
+<li>NodeJS - for npm</li>
+<li>xml2json - to convert the signal-back XML to JSON</li>
+<li>jq - to process the JSON array</li>
+</ol>
+</li>
+<li>Downloads signal-back (0.1.7 Alpha, latest as of 08Dec2018)</li>
+<li>Marks the file executable</li>
+</ol>
+<p><code><br />
+curl -sL https://deb.nodesource.com/setup_11.x | bash -<br />
+apt-get update<br />
+apt-get install -y nodejs jq curl<br />
+wget -O signal-back_linux_amd64 https://github.com/xeals/signal-back/releases/download/v0.1.7-alpha.1/signal-back_linux_amd64<br />
+chmod +x signal-back_linux_amd64<br />
+</code></p>
+<p>Sources:</p>
+<ul>
+<li>https://github.com/xeals/signal-back</li>
+<li>https://github.com/Inist-CNRS/node-xml2json-command</li>
+<li>https://github.com/nodesource/distributions</li>
+</ul>
+<p>Signal's possible commands, the CSV format has epoc/UNIX time. It was easier for me to iterate through the XML using <em>jq</em> to get the <em>readable_date</em> field.</p>
+<ul>
+<li>./signal-back_linux_amd64 format -f CSV -o backup.csv signal-[Date-Time].backup</li>
+<li>./signal-back_linux_amd64 format -f XML -o signal.xml signal-[Date-Time].backup</li>
+</ul>
+<p>Use this to get how many arrays / rows you have: <code>cat signal.json | jq '.smses.count'</code></p>
+<p>Use the below to iterate through the JSON file and get the address, type (2 is sent, 1 is received), body, and date:</p>
+<p><code>for i in {0..3750}; do cat signal.json | jq ".smses.sms[$i].address, .smses.sms[$i].type, .smses.sms[$i].body, .smses.sms[$i].readable_date" &gt;&gt; export.txt; echo "" &gt;&gt; export.txt; echo "$i" ; done</code></p>
+<p>&nbsp;</p>
+<p>The below is old information</p>
+<p>&nbsp;</p>
+<hr />
+<p>signal-back_windows_amd64.exe format -f XML signal-XXX.backup &gt; backup.xml</p>
+<ol>
+<li>Take that XML output to https://www.browserling.com/tools/xml-to-json</li>
+<li>I threw the JSON into NotePad++, found all columns in this document, and copied to a spreadsheet</li>
+<li>"Text to Columns" as needed</li>
+</ol>
+<p>I'm sure there is a way to parse the JSON with "jq" but I couldn't figure it out. I needed to do this versus CSV, because the repo doesn't have the real date, but has "uint64."</p>
+<p>Update 06August2018:</p>
+<p>Install xml2json from <a href="https://github.com/Inist-CNRS/node-xml2json-command">GitHub</a>, then run the command below:</p>
+<blockquote><p>cat backup.xml | xml2json &gt; backup.json</p></blockquote>
+<p>Run these JQ Commands (updated 02Sep2018):</p>
+<blockquote><p><del>for i in {0..1690}; do cat backup.json | jq ".smses.sms[$i]._address, .smses.sms[$i]._type, .smses.sms[$i]._readable_date" &gt;&gt; export.txt ; echo "" &gt;&gt; export.txt; done; echo "done"</del></p></blockquote>
+<blockquote><p>cat backup.json | jq '.smses.sms | length'</p></blockquote>
+<blockquote><p>for i in {0..2450}; do cat backup.json | jq ".smses.sms[$i].\"@address\", .smses.sms[$i].\"@type\", .smses.sms[$i].\"@readable_date\"" &gt;&gt; export.txt; echo "" &gt;&gt; export.txt; done</p></blockquote>
+<p>More Updates as sometimes the above doesn't work; 1 is received:</p>
+<blockquote>
+<pre>cat backup.json | jq '.smses.sms' | grep 'status' | wc
+for i in {0..2873}; do cat backup.json | jq ".smses.sms[$i].address, .smses.sms[$i].type, .smses.sms[$i].readable_date" &gt;&gt; export.txt; echo "" &gt;&gt; export.txt; done</pre>
+</blockquote>
+<p><del>Convert from UTC in Excel:</del></p>
+<blockquote>
+<pre><del>=B3 + (10 / 24)</del></pre>
+</blockquote>
+<p>Sources:</p>
+<ul>
+<li><a href="https://github.com/xeals/signal-back">Signal Backup - GitHub</a></li>
+<li><a href="https://stackoverflow.com/questions/34426915/how-to-create-for-loops-with-jq-in-bash">For Loop</a></li>
+<li><a href="https://excelribbon.tips.net/T010739_Converting_UTC_Times_to_Local_Times.html">Excel</a></li>
+</ul>

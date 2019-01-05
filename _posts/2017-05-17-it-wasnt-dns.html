@@ -1,0 +1,25 @@
+---
+layout: post
+status: publish
+published: true
+title: It Wasn’t DNS
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 194
+wordpress_url: http://kvchmurphy.com/?p=194
+date: '2017-05-17 12:54:11 -0500'
+date_gmt: '2017-05-17 16:54:11 -0500'
+categories:
+- Articles
+tags: []
+comments: []
+---
+<p>I recently had a ticket come in for another customer that had a load balanced setup between three hosts: host1, host2, and host3. Each host uses a server-side script to send e-mail via an external mail server.</p>
+<p>While troubleshooting, we noticed host1 and host3 were working just fine with the e-mail script. Host2 was having difficulties. We checked the firewall on all three servers; they were all the same. There were no custom entries in the Windows hosts file.</p>
+<p>I finally had the bright idea to run <em>route print</em> in command prompt and voila! There was an extra default gateway for host2. After deleting that extra gateway, all three hosts were functioning as normal.</p>
+<p>Although it was not DNS this time, routing is definitely important in network traffic (obviously).</p>

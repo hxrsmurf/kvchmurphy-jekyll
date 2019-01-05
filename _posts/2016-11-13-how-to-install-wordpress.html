@@ -1,0 +1,56 @@
+---
+layout: post
+status: publish
+published: true
+title: How To Install Wordpress
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 12
+wordpress_url: http://kvchmurphy.com/?p=12
+date: '2016-11-13 14:11:54 -0600'
+date_gmt: '2016-11-13 19:11:54 -0600'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<ol>
+<li>apt-get install apache2 mysql-client libapache2-mod-php php-mysql</li>
+<li>Restart apache2</li>
+<li>Create a mysql user</li>
+<li>Create a mysql database</li>
+<li>Grant mysql user to mysql database</li>
+<li>Download and extract wordpress to apache2 directory</li>
+</ol>
+<p>&nbsp;</p>
+<p>Apache URL Rewrite"</p>
+<p><code>a2enmod rewrite</code></p>
+<p><code>&lt;Directory /var/www/kvchmurphy.com/&gt;<br />
+Options Indexes FollowSymLinks MultiViews<br />
+AllowOverride All<br />
+Order allow,deny<br />
+allow from all<br />
+&lt;/Directory&gt;</code></p>
+<p>&nbsp;</p>
+<p>.htaccess file<br />
+<code># BEGIN WordPress<br />
+&lt;IfModule mod_rewrite.c&gt;<br />
+RewriteEngine On<br />
+RewriteBase /<br />
+RewriteRule ^index\.php$ - [L]<br />
+RewriteCond %{REQUEST_FILENAME} !-f<br />
+RewriteCond %{REQUEST_FILENAME} !-d<br />
+RewriteRule . /index.php [L]<br />
+&lt;/IfModule&gt;<br />
+# END WordPress</code></p>
+<p>&nbsp;</p>
+<p><a href="http://wpbeaches.com/updating-wordpress-mysql-database-after-moving-to-a-new-url/">WP Update</a><br />
+<code>UPDATE wp_options SET option_value = replace(option_value, 'http://www.oldurl', 'http://www.newurl') WHERE option_name = 'home' OR option_name = 'siteurl';</code></p>
+<p><code>UPDATE wp_posts SET guid = replace(guid, 'http://www.oldurl','http://www.newurl');</code></p>
+<p><code>UPDATE wp_posts SET post_content = replace(post_content, 'http://www.oldurl', 'http://www.newurl');</code></p>
+<p><code>UPDATE wp_postmeta SET meta_value = replace(meta_value,'http://www.oldurl','http://www.newurl');</code></p>

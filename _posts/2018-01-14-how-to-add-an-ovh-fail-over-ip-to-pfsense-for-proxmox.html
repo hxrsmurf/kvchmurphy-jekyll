@@ -1,0 +1,33 @@
+---
+layout: post
+status: publish
+published: true
+title: How To Add An OVH Fail Over IP to pFsense for Proxmox
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 453
+wordpress_url: https://kvchmurphy.com/?p=453
+date: '2018-01-14 21:50:30 -0600'
+date_gmt: '2018-01-15 02:50:30 -0600'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<p>This is a follow-up to the OVH + Failover IP address setup, with articles this time! I had used ESXi in the last article, but felt like using the Proxmox virtualization this time around. I found that pFsense WAN could connect to the internet, but my virtual machines could not. I found that some weird default route wasn't created. This was probably due to the weird failover IP that OVH/SoYouStart gives you.</p>
+<p>Anyhow, create a simple shell script and run it at boot time. Place it in the directory below; example shell script below.</p>
+<pre>route delete default
+ route add -net [MAIN IP].254 -iface [pFsense WAN]
+ route add default [MAIN IP].254
+ /usr/local/etc/rc.d/</pre>
+<p>Additionally, I had to use an internal bridge with the WAN and NOT create a new interface with the IPs. Looks like it is an "OVS Bridge." This bridge was then used to create the LAN network.</p>
+<ul>
+<li>https://doc.pfsense.org/index.php/Executing_commands_at_boot_time</li>
+<li>https://doc.pfsense.org/index.php/Virtualizing_pfSense_on_Proxmox</li>
+</ul>
+<p>https://kvchmurphy.com/2017/05/how-to-add-an-ovh-fail-over-ip-to-pfsense/</p>

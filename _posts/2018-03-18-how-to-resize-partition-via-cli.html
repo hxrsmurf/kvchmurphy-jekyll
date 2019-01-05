@@ -1,0 +1,36 @@
+---
+layout: post
+status: publish
+published: true
+title: How To Resize Partition Via CLI
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 486
+wordpress_url: https://kvchmurphy.com/?p=486
+date: '2018-03-18 08:58:22 -0500'
+date_gmt: '2018-03-18 12:58:22 -0500'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<p>This is a follow-up to this same tutorial using Google Compute Engine's Tutorial (<a href="https://kvchmurphy.com/2017/11/how-to-resize-google-compute-engine-disk/">here</a>). You will want to take a snapshot or ensure you have good backups in case you muck this up! What we're doing is deleting the partition, re-creating it at the same start sector, and then using the last end sector. Then checking the file system and finally resizing the partition.</p>
+<p>I found this method was a lot quicker than going to GPARTED for it.</p>
+<ol>
+<li>fdisk /dev/sdb</li>
+<li>p</li>
+<li>d</li>
+<li>n</li>
+<li>[ENTER A FEW TIMES FOR DEFAULT]</li>
+<li>w</li>
+<li>q</li>
+<li>e2fsck /dev/sdb1</li>
+<li>e2fsck -f /dev/sdb1</li>
+<li>resize2fs /dev/sdb1</li>
+<li>mount /dev/sdb1 /mnt/seafile</li>
+</ol>

@@ -1,0 +1,26 @@
+---
+layout: post
+status: publish
+published: true
+title: How To Fix Dovecot Not Deleting Inbox E-mails
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 139
+wordpress_url: http://kvchmurphy.com/?p=139
+date: '2017-02-20 20:10:31 -0600'
+date_gmt: '2017-02-21 01:10:31 -0600'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<p>I was receiving this error after setting up Roundcube, Postfix and Dovecot.</p>
+<p><code>Error: file_dotlock_create(/var/mail/kevin) failed: Permission denied (euid=1000(kevin) egid=1000(kevin) missing +w perm: /var/mail, we're not in group 8(mail), dir owned by 0:8 mode=0775) (set mail_privileged_group=mail)</code></p>
+<p>Edit the line below in the file: /etc/dovecot/conf.d/10-mail.conf</p>
+<p><code>mail_privileged_group = mail</code></p>
+<p><a href="http://www.dovecot.org/list/dovecot/2009-January/036142.html">Reference</a></p>

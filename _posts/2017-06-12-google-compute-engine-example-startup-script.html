@@ -1,0 +1,70 @@
+---
+layout: post
+status: publish
+published: true
+title: Google Compute Engine Example Startup Script
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 277
+wordpress_url: https://kvchmurphy.com/?p=277
+date: '2017-06-12 23:56:50 -0500'
+date_gmt: '2017-06-13 03:56:50 -0500'
+categories:
+- Articles
+tags: []
+comments: []
+---
+<p>I have been messing around with Google Compute Engine lately. I have a WordPress website (this one actually) that is now "highly available."</p>
+<p>I am still new at this, so be gentle.</p>
+<p>Here is the startup script in <a href="https://docs.google.com/document/d/1_JzMeOeR5QSnF1JBNI5LqhM4MfdVChE55EsrXIHhpqM/edit?usp=sharing">Google Docs</a> format and below is the formatted code.</p>
+<p>&nbsp;</p>
+<pre>#!/bin/bash
+ 
+export DEBIAN_FRONTEND="noninteractive"
+ 
+debconf-set-selections &lt;&lt;&lt; "postfix postfix/main_mailer_type select Satellite system"
+debconf-set-selections &lt;&lt;&lt; "postfix postfix/mailname string $HOSTNAME"
+debconf-set-selections &lt;&lt;&lt; "postfix postfix/relayhost string smtp.mailgun.org:2525"
+ 
+apt-get update 
+apt-get upgrade -yf
+apt-get install apache2 unzip php5 php5-mysql postfix libsasl2-dev libsasl2-modules telnet mysql-client procmail -yf
+
+#fail2ban debconf-utils
+ 
+mkdir -p /var/www/example.com/
+ 
+gsutil -m rsync -r -d gs://example-bucket/postfix/ /etc/postfix/
+gsutil -m rsync -r -d gs://example-bucket/apache2/ /etc/apache2/sites-available/
+gsutil -m rsync -r -d gs://example-bucket/example.com/ /var/www/example.com/
+ 
+chown -r www-data:www-data /var/www/
+chmod -R 755 /var/www/
+ 
+mkdir -p /etc/ssl/example.com/
+gsutil -m rsync -r -d gs://website-11june2017/ssl/kvchmurphy.com/ /etc/ssl/example.com/
+ 
+postmap /etc/postfix/sasl_passwd
+
+wget -O /root/cloud_sql_proxy https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64
+chmod +x /root/cloud_sql_proxy
+/root/cloud_sql_proxy -instances=example-sql-instance=tcp:3306 &amp;
+ 
+export DEBIAN_FRONTEND="text"
+ 
+a2enmod rewrite
+a2enmod ssl
+a2ensite website
+a2ensite ssl
+ 
+service apache2 restart
+service postfix restart
+ 
+rm /var/www/html/index.html
+echo "Complete" &gt; /var/www/html/done.html
+echo -e "Subject:MailGun-Script \n\nMailGun Script" | sendmail -v you@example.com</pre>

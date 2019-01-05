@@ -1,0 +1,24 @@
+---
+layout: post
+status: publish
+published: true
+title: How To Find Logical File Names In MSSQL
+author:
+  display_name: kevin
+  login: kevin
+  email: kevin-wp@hxrsmurf.info
+  url: ''
+author_login: kevin
+author_email: kevin-wp@hxrsmurf.info
+wordpress_id: 490
+wordpress_url: https://kvchmurphy.com/?p=490
+date: '2018-03-24 04:45:42 -0500'
+date_gmt: '2018-03-24 08:45:42 -0500'
+categories:
+- Tutorial
+tags: []
+comments: []
+---
+<p>I am migrating over 50 SQL databases in my day job. I'm a poor scripter and for-looper so I did the GUI version of Backup and Restore, selected Script, and threw it in excel to then "for loop." I found that the customer named their logical file names the same for many databases. My Google-fu came up with this and i updated my "script" as needed. Yipee.</p>
+<p><code>SELECT DB_NAME(database_id) AS DatabaseName, name AS LogicalFileName, physical_name AS PhysicalFileName FROM sys.master_files AS mf</code></p>
+<p><a href="https://www.sqlservercentral.com/Forums/Topic1087890-391-1.aspx" target="_blank" rel="noopener">Source</a></p>
