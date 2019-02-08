@@ -11,6 +11,7 @@ url:
 # *** IMPORTANT: If your local "jekyll serve" throws errors change this to '' or
 #     run it like so: jekyll serve --baseurl=''
 baseurl: ''
+mediaurl: 'https://media.kvchmurphy.com'
 
 # These can be '' to hide the Github or Gitlab nav buttons
 gitlab: ''
