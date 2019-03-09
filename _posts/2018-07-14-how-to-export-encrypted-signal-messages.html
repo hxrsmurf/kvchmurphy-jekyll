@@ -37,10 +37,12 @@ comments: []
 <li>Marks the file executable</li>
 </ol>
 <p><code><br />
+apt-get install -y nodejs jq curl build-essential <br />
 curl -sL https://deb.nodesource.com/setup_11.x | bash -<br />
 apt-get update<br />
 apt-get install -y nodejs jq curl<br />
-wget -O signal-back_linux_amd64 https://github.com/xeals/signal-back/releases/download/v0.1.7-alpha.1/signal-back_linux_amd64<br />
+npm install xml2json<br />
+wget -O signal-back_linux_amd64 https://github.com/xeals/signal-back/releases/download/v0.1.7-alpha.2/signal-back_linux_amd64<br />
 chmod +x signal-back_linux_amd64<br />
 </code></p>
 <p>Sources:</p>
@@ -57,6 +59,19 @@ chmod +x signal-back_linux_amd64<br />
 <p>Use this to get how many arrays / rows you have: <code>cat signal.json | jq '.smses.count'</code></p>
 <p>Use the below to iterate through the JSON file and get the address, type (2 is sent, 1 is received), body, and date:</p>
 <p><code>for i in {0..3750}; do cat signal.json | jq ".smses.sms[$i].address, .smses.sms[$i].type, .smses.sms[$i].body, .smses.sms[$i].readable_date" &gt;&gt; export.txt; echo "" &gt;&gt; export.txt; echo "$i" ; done</code></p>
+<p>
+Snapchat: Have to edit the JSON to be "From" and "Sent". And = a2 - (6/24) for timezone conversion.
+
+</br>
+
+<code> for i in {0..1013}; do cat chat_history.json | jq ".Chat[$i].From,.Chat[$i].MediaType,.Chat[$i].Created" >> export.txt; echo "" >> export.txt; echo "$i" ; done
+</code>
+
+<code>
+for i in {0..1013}; do cat chat_history.json | jq ".SentChatHistory[$i].To,.SentChatHistory[$i].MediaType,.SentChatHistory[$i].Created" >> export.txt; echo "" >> export.txt; echo "$i" ; done
+</code>
+
+</p>
 <p>&nbsp;</p>
 <p>The below is old information</p>
 <p>&nbsp;</p>
