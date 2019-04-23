@@ -60,7 +60,7 @@ chmod +x signal-back_linux_amd64<br />
 <p>Use the below to iterate through the JSON file and get the address, type (2 is sent, 1 is received), body, and date:</p>
 <p><code>for i in {0..3750}; do cat signal.json | jq ".smses.sms[$i].address, .smses.sms[$i].type, .smses.sms[$i].body, .smses.sms[$i].readable_date" &gt;&gt; export.txt; echo "" &gt;&gt; export.txt; echo "$i" ; done</code></p>
 <p>
-Snapchat: Have to edit the JSON to be "From" and "Sent". And = a2 - (6/24) for timezone conversion.
+Snapchat: Have to edit the JSON to be "From" and "Sent". And "= a2 - (6/24)" for timezone conversion.
 
 </br>
 
@@ -71,6 +71,18 @@ Snapchat: Have to edit the JSON to be "From" and "Sent". And = a2 - (6/24) for t
 for i in {0..1013}; do cat chat_history.json | jq ".SentChatHistory[$i].To,.SentChatHistory[$i].MediaType,.SentChatHistory[$i].Created" >> export.txt; echo "" >> export.txt; echo "$i" ; done
 </code>
 
+<p>
+
+For the Snapchats themselves:
+<p>
+<code>
+for i in {0..1500}; do cat snap_history.json  | jq ".Sent[$i].To,.Sent[$i].MediaType,.Sent[$i].Created"  >> export_sent.txt; echo "" >> export_sent.txt; echo "$i" ; done
+</code>
+
+<code>
+for i in {0..1500}; do cat snap_history.json  | jq ".Received[$i].From,.Received[$i].MediaType,.Received[$i].Created"  >> export_received.txt; echo "" >> export_received.txt; echo "$i" ; done
+</code>
+</p>
 </p>
 <p>&nbsp;</p>
 <p>The below is old information</p>
