@@ -22,6 +22,33 @@ comments: []
 <ul>
 <li>Debian 9.6 x64</li>
 </ul>
+
+<p>
+
+Updated - 2019-07-17<br />
+<code>
+wget https://github.com/xeals/signal-back/releases/download/v0.1.7-alpha.2/signal-back_linux_amd64 -O signal-back_linux_amd64<br />
+
+chmod +x signal-back_linux_amd64<br />
+
+./signal-back_linux_amd64 format -f XML -o output.xml signal-2019-07-02-07-31-08.backup <br />
+
+cat /root/2019-07-02-Texts-2/output.xml | /root/node_modules/xml2json/bin/xml2json > /root/2019-07-02-Texts-2/output.json<br />
+
+cat output.json | jq '.smses.count'<br />
+
+cat output.json | jq '.smses.sms[1800].readable_date'<br />
+
+for i in {1984..2200}; do cat output.json | jq ".smses.sms[$i].address, .smses.sms[$i].type, .smses.sms[$i].readable_date, .smses.sms[$i].body" >> signal-sms.txt; echo "" >> signal-sms.txt; echo "$i" ; done<br />
+
+for i in {100..150}; do cat output.json | jq ".smses.mms[$i].address, .smses.mms[$i].readable_date" >> signal-mms.txt; echo "" >> signal-mms.txt; echo "$i" ; done<br />
+
+</code>
+
+</p>
+
+</hr>
+
 <p>The below commands:</p>
 <ol>
 <li>Adds NodeSource's repo to your aptitude repository</li>
@@ -45,6 +72,15 @@ npm install xml2json<br />
 wget -O signal-back_linux_amd64 https://github.com/xeals/signal-back/releases/download/v0.1.7-alpha.2/signal-back_linux_amd64<br />
 chmod +x signal-back_linux_amd64<br />
 </code></p>
+
+<p><code>
+cat /root/2019-06-07/signal/signal.xml | /root/node_modules/xml2json/bin/xml2json > /root/2019-06-07/signal/signal.json
+
+cat signal.json | jq '.smses.count'
+
+for i in {0..2069}; do cat signal.json | jq ".smses.sms[$i].address, .smses.sms[$i].type, .smses.sms[$i].readable_date, .smses.sms[$i].body" >> export.txt; echo "" >> export.txt; echo "$i" ; done
+</code></p>
+
 <p>Sources:</p>
 <ul>
 <li>https://github.com/xeals/signal-back</li>
@@ -59,28 +95,43 @@ chmod +x signal-back_linux_amd64<br />
 <p>Use this to get how many arrays / rows you have: <code>cat signal.json | jq '.smses.count'</code></p>
 <p>Use the below to iterate through the JSON file and get the address, type (2 is sent, 1 is received), body, and date:</p>
 <p><code>for i in {0..3750}; do cat signal.json | jq ".smses.sms[$i].address, .smses.sms[$i].type, .smses.sms[$i].body, .smses.sms[$i].readable_date" &gt;&gt; export.txt; echo "" &gt;&gt; export.txt; echo "$i" ; done</code></p>
+
+<p><code>
+
+for i in {0..91}; do cat signal.json | jq ".smses.mms[$i].address, .smses.mms[$i].readable_date"  >> mms.txt; echo "" >> sms.txt; echo "$i" ; done
+
+</code></p>
+
 <p>
 Snapchat: Have to edit the JSON to be "From" and "Sent". And "= a2 - (6/24)" for timezone conversion.
 
 </br>
 
-<code> for i in {0..1013}; do cat chat_history.json | jq ".Chat[$i].From,.Chat[$i].MediaType,.Chat[$i].Created" >> export.txt; echo "" >> export.txt; echo "$i" ; done
-</code>
+<p>
 
-<code>
-for i in {0..1013}; do cat chat_history.json | jq ".SentChatHistory[$i].To,.SentChatHistory[$i].MediaType,.SentChatHistory[$i].Created" >> export.txt; echo "" >> export.txt; echo "$i" ; done
+<code> for i in {0..1205}; do cat chat_history.json | jq ".Sent[$i].To,.Sent[$i].MediaType,.Sent[$i].Created" >> snap_sent.txt; echo "" >> snap_sent.txt; echo "$i"; done
 </code>
+</p>
+
+<p>
+<code>
+for i in {0..1096}; do cat chat_history.json | jq ".Received[$i].From,.Received[$i].MediaType,.Received[$i].Created" >> snap_received.txt; echo "" >> snap_received.txt; echo "$i"; done
+</code>
+</p>
 
 <p>
 
 For the Snapchats themselves:
 <p>
 <code>
-for i in {0..1500}; do cat snap_history.json  | jq ".Sent[$i].To,.Sent[$i].MediaType,.Sent[$i].Created"  >> export_sent.txt; echo "" >> export_sent.txt; echo "$i" ; done
+for i in {0..1102}; do cat snap_history.json | jq ".Received[$i].From,.Received[$i].MediaType,.Received[$i].Created" >> snap_history_received.txt; echo "" >> snap_history_received.txt; echo "$i"; done
 </code>
+</p>
 
+<p>
 <code>
-for i in {0..1500}; do cat snap_history.json  | jq ".Received[$i].From,.Received[$i].MediaType,.Received[$i].Created"  >> export_received.txt; echo "" >> export_received.txt; echo "$i" ; done
+for i in {0..1634}; do cat snap_history.json | jq ".Sent[$i].To,.Sent[$i].MediaType,.Sent[$i].Created" >> snap_history_sent.txt; echo "" >> snap_history_sent.txt; echo "$i"; done
+
 </code>
 </p>
 </p>

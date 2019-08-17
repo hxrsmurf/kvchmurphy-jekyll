@@ -49,3 +49,31 @@ comments: []
 <li>xfs_growfs /dev/[volume group name]/[logical volume]</li>
 </ul>
 <p><a href="https://www.tecmint.com/extend-and-reduce-lvms-in-linux/">Tecmint</a> | <a href="https://stackoverflow.com/questions/26305376/resize2fs-bad-magic-number-in-super-block-while-trying-to-open">Stackoverflow</a></p>
+
+===
+
+```
+# Unmount the filesystem/partition
+umount /dev/sdb1 /mnt/seafile
+
+
+# Delete the partition
+# Create the partition at the same start sector (2048)
+# Keep disk signature of Linux, don't overwrite
+
+fdisk /dev/sdb
+
+# Check the filesystem/partition
+
+e2fsck -f /dev/sdb1
+
+# Resize the filesystem/partition
+
+resize2fs /dev/sdb1
+
+# Mount the filesystem/partition
+
+mount /dev/sdb1 /mnt/seafile
+```
+
+[Redhat](https://access.redhat.com/articles/1190213)
