@@ -18,9 +18,9 @@ tags: []
 comments: []
 ---
 
-Per Farmsoft Studios and SoftHints, one can follow the steps below:
+Per [Farmsoft Studios](https://www.farmsoftstudios.com/blog/2014/01/web-applications/resetting-your-ghost-blog-password/) and [SoftHints](https://blog.softhints.com/how-to-reset-user-password-ghost-blog-mysql/), one can follow the steps below:
 
-1. Generate Bcrypt hash from PasswordHashing
+1. Generate Bcrypt hash from [PasswordHashing](https://passwordhashing.com/BCrypt)
 2. Get the ghost config password (database access)
 
 ```
