@@ -35,7 +35,7 @@ paginate: 5
 
 highlighter: rouge
 markdown: kramdown
-plugins: ['jekyll-paginate', 'jekyll-remote-theme ]
+plugins: ['jekyll-paginate', 'jekyll-remote-theme' ]
 
 exclude: ['README.md', 'LICENSE']
 
